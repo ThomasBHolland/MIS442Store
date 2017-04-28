@@ -10,9 +10,10 @@ namespace MIS442Store.Controllers
     {
         public ActionResult Index()
         {
+            throw new Exception("Broken");
             return View();
-        }
 
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
