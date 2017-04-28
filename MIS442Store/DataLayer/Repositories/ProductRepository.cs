@@ -45,7 +45,7 @@ namespace MIS442Store.DataLayer.Repositories
         }
         public List<Product> GetList()
         {
-            Product p = null;
+            List<Product> ProductList = new List<Product>();
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MIS442"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
@@ -56,20 +56,22 @@ namespace MIS442Store.DataLayer.Repositories
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                       
                         if (reader.Read())
                         {
-                            p = new Product();
+                            Product p = new Product();
                             p.ProductID = int.Parse(reader["ProductID"].ToString());
                             p.ProductName = reader["ProductName"].ToString();
                             p.ProductCode = reader["ProductCode"].ToString();
                             p.ProductVersion = decimal.Parse(reader["ProductVersion"].ToString());
                             p.ProductReleaseDate = DateTime.Parse(reader["ProductName"].ToString());
+                            ProductList.Add(p);
                         }
                     }
 
                 }
             }
-            return ();
+            return ProductList;
         }
 
         public void Save(Product product)
