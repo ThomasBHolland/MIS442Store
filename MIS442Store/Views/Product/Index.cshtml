@@ -1,0 +1,14 @@
+﻿@using MIS442Store.DataLayer.DataModels
+@model List<Product>
+
+
+@foreach(var Product in Model)
+
+               <table>
+                   <tr>
+                       @Html.ActionLink("Edit Product", "Edit", "Product", new{ @ProductName=product.ProductName }, null)
+                       @Html.ActionLink("Edit Product", "Edit", "Product", new{ @ProductCode = product.ProductCode }, null)
+                       @Html.ActionLink("Edit Product", "Edit", "Product", new{ @ProductVersion=product.ProductVersion }, null)
+                       @Html.ActionLink("Edit Product", "Edit", "Product", new{ @ProductReleaseDate=product.ProductReleaseDate }, null)
+                   </tr>
+               </table>
