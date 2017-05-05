@@ -58,7 +58,7 @@ namespace MIS442Store.DataLayer.Repositories
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                        
-                        if (reader.Read())
+                        while (reader.Read())
                         {
                             Product p = new Product();
                             p.ProductID = int.Parse(reader["ProductID"].ToString());
