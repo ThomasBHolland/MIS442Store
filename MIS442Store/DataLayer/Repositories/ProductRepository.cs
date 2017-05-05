@@ -15,7 +15,7 @@ namespace MIS442Store.DataLayer.Repositories
         public Product Get(int id)
         {
             Product p = null;
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings[@"OW206_5037\SQLEXPRESS_MIS"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DB_MIS442_Tholland"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
                 {
@@ -34,7 +34,7 @@ namespace MIS442Store.DataLayer.Repositories
                             p.ProductName = reader["ProductName"].ToString();
                             p.ProductCode = reader["ProductCode"].ToString();
                             p.ProductVersion = decimal.Parse(reader["ProductVersion"].ToString());
-                            p.ProductReleaseDate = DateTime.Parse( reader["ProductName"].ToString());
+                            p.ProductReleaseDate = DateTime.Parse( reader["ProductReleaseDate"].ToString());
 
                         }
                     }
@@ -46,13 +46,14 @@ namespace MIS442Store.DataLayer.Repositories
         public List<Product> GetList()
         {
             List<Product> ProductList = new List<Product>();
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MIS442"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DB_MIS442_Tholland"].ConnectionString))
             {
+                
                 using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "spProduct_Get";
+                    command.CommandText = "spProduct_GetList";
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -64,7 +65,7 @@ namespace MIS442Store.DataLayer.Repositories
                             p.ProductName = reader["ProductName"].ToString();
                             p.ProductCode = reader["ProductCode"].ToString();
                             p.ProductVersion = decimal.Parse(reader["ProductVersion"].ToString());
-                            p.ProductReleaseDate = DateTime.Parse(reader["ProductName"].ToString());
+                            p.ProductReleaseDate = DateTime.Parse(reader["ProductReleaseDate"].ToString());
                             ProductList.Add(p);
                         }
                     }
@@ -76,15 +77,18 @@ namespace MIS442Store.DataLayer.Repositories
 
         public void Save(Product product)
         {
-            Product p = null;
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MIS442"].ConnectionString))
+           
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DB_MIS442_Tholland"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
                 {
-                    command.Connection = connection;
+                    command.Connection = connection;                 
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "spProduct_InsertUpdate";
-                    command.Parameters.AddWithValue("@ProductID", product.ProductID);
+                    if (product.ProductID != 0)
+                    { 
+                        command.Parameters.AddWithValue("@ProductID", product.ProductID);
+                    }
                     command.Parameters.AddWithValue("@ProductCode", product.ProductCode);
                     command.Parameters.AddWithValue("@ProductName", product.ProductName);
                     command.Parameters.AddWithValue("@ProductVersion", product.ProductVersion);

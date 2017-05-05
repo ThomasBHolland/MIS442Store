@@ -22,8 +22,7 @@ namespace MIS442Store.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Title = "MIS442 News";
-            ViewBag.Header = "MIS442 News";
+           
             return View(_prodRepo.GetList());
         }
 
@@ -44,6 +43,8 @@ namespace MIS442Store.Controllers
             {
                 return View(product);
             }
+            _prodRepo.Save(product);
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult Edit(int id)
@@ -60,9 +61,12 @@ namespace MIS442Store.Controllers
             {
                 return View(product);
             }
+            _prodRepo.Save(product);
+            return RedirectToAction("Index");
         }
 
-
+   
+        
     }
 
 }
