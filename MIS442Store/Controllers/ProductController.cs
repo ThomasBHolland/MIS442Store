@@ -1,9 +1,13 @@
-﻿using System;
+﻿using MIS442Store.DataLayer.DataModels;
+using MIS442Store.DataLayer.Interfaces;
+using MIS442Store.DataLayer.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
+
+using System.Web.Mvc;
 
 namespace MIS442Store.Controllers
 {
@@ -42,9 +46,10 @@ namespace MIS442Store.Controllers
             }
         }
         [HttpGet]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(int id)
         {
-
+            Product product = _prodRepo.Get(id);
+            return View(product);
           
         }
         [HttpPost]
