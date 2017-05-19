@@ -33,7 +33,7 @@ namespace MIS442Store.DataLayer.Repositories
                             p.RegistrationDate = DateTime.Parse(reader["RegistrationDate"].ToString());
                             p.RegistrationProductID = int.Parse(reader["RegistrationProductID"].ToString());
                             p.RegistrationSerialNumber = reader["RegistrationSerialNumber"].ToString();
-                            p.RegistrationVerified = bool.Parse(reader["RegistrationVerififed"].ToString());
+                            p.RegistrationVerified = bool.Parse(reader["RegistrationVerified"].ToString());
                             p.RegistrationUserName = reader["RegistrationUserName"].ToString();
                             p.RegistrationAddress = reader["RegistrationAddress"].ToString();
                             p.RegistrationState = reader["RegistrationState"].ToString();
@@ -71,7 +71,7 @@ namespace MIS442Store.DataLayer.Repositories
                             r.RegistrationDate = DateTime.Parse(reader["RegistrationDate"].ToString());
                             r.RegistrationProductID = int.Parse(reader["RegistrationProductID"].ToString());
                             r.RegistrationSerialNumber = reader["RegistrationSerialNumber"].ToString();
-                            r.RegistrationVerified = bool.Parse(reader["RegistrationVerififed"].ToString());
+                            r.RegistrationVerified = bool.Parse(reader["RegistrationVerified"].ToString());
                             r.RegistrationUserName = reader["RegistrationUserName"].ToString();
                             r.RegistrationAddress = reader["RegistrationAddress"].ToString();
                             r.RegistrationState = reader["RegistrationState"].ToString();
@@ -110,7 +110,7 @@ namespace MIS442Store.DataLayer.Repositories
                             p.RegistrationDate = DateTime.Parse(reader["RegistrationDate"].ToString());
                             p.RegistrationProductID = int.Parse(reader["RegistrationProductID"].ToString());
                             p.RegistrationSerialNumber = reader["RegistrationSerialNumber"].ToString();
-                            p.RegistrationVerified = bool.Parse(reader["RegistrationVerififed"].ToString());
+                            p.RegistrationVerified = bool.Parse(reader["RegistrationVerified"].ToString());
                             p.RegistrationUserName = reader["RegistrationUserName"].ToString();
                             p.RegistrationAddress = reader["RegistrationAddress"].ToString();
                             p.RegistrationState = reader["RegistrationState"].ToString();
@@ -134,7 +134,13 @@ namespace MIS442Store.DataLayer.Repositories
                 using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "SELECT * FROM Registration";
+                    command.CommandText = @"Insert INTO Registration 
+                    (RegistrationDate, RegistrationProductID, RegistrationSerialNumber, RegistrationVerified, 
+                    RegistrationUserName, RegistrationAddress, RegistrationState, RegistrationCity, 
+                    RegistrationZip, RegistrationPhone) VALUES 
+                    (@RegistrationDate, @RegistrationProductID, @RegistrationSerialNumber, @RegistrationVerified, 
+                    @RegistrationUserName, @RegistrationAddress, @RegistrationState, @RegistrationCity, 
+                    @RegistrationZip, @RegistrationPhone)";
                     command.CommandType = CommandType.Text;
                     if (registration.RegistrationID != 0)
                     {
@@ -143,7 +149,7 @@ namespace MIS442Store.DataLayer.Repositories
                     command.Parameters.AddWithValue("@RegistrationDate", registration.RegistrationDate);
                     command.Parameters.AddWithValue("@RegistrationProductID", registration.RegistrationProductID);
                     command.Parameters.AddWithValue("@RegistrationSerialNumber", registration.RegistrationSerialNumber);
-                    command.Parameters.AddWithValue("@RegistrationVerififed", registration.RegistrationVerified);
+                    command.Parameters.AddWithValue("@RegistrationVerified", registration.RegistrationVerified);
                     command.Parameters.AddWithValue("@RegistrationUserName", registration.RegistrationUserName);
                     command.Parameters.AddWithValue("@RegistrationAddress", registration.RegistrationAddress);
                     command.Parameters.AddWithValue("@RegistrationState", registration.RegistrationState);

@@ -2,3 +2,31 @@
 @model List<Registration>
 
 
+@Html.ActionLink("Add Registration", "AddRegistration", "Registration")
+
+<table>
+    <thead>
+        
+
+        <tr>
+            <th> Reg ID</th>
+            <th> Reg Date</th>
+            <th> REg Serial Number</th>
+            <th> Reg User Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var registration in Model)
+        {
+            <tr>
+
+                <td> @registration.RegistrationID</td>
+                <td> @registration.RegistrationDate</td>
+                <td> @registration.RegistrationSerialNumber</td>
+                <td> @registration.RegistrationUserName</td>
+            </tr>
+        }
+    </tbody>
+   
+</table>

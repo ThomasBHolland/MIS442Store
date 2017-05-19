@@ -25,9 +25,11 @@ namespace MIS442Store.Controllers
         public ActionResult Index()
         {
             
-            return View(_regRepo.GetUserRegistrations("Thomas"));
+            return View(_regRepo.GetUserRegistrations("User.Identity.Name"));
         }
+
         [HttpGet]
+        [Authorize]
         public ActionResult AddRegistration()
         {
             RegistrationModel reg = new RegistrationModel();
@@ -35,6 +37,7 @@ namespace MIS442Store.Controllers
             return View(reg);
         }
         [HttpPost]
+        [Authorize]
         public ActionResult AddRegistration(RegistrationModel registration)
         {
             if (!ModelState.IsValid)
@@ -48,12 +51,13 @@ namespace MIS442Store.Controllers
             regData.RegistrationProductID = registration.RegistrationProductID;
             regData.RegistrationSerialNumber = registration.RegistrationSerialNumber;
             regData.RegistrationVerified = registration.RegistrationVerified;
-            regData.RegistrationUserName = registration.RegistrationUserName;
+            regData.RegistrationUserName = User.Identity.Name;
             regData.RegistrationAddress = registration.RegistrationAddress;
             regData.RegistrationState = registration.RegistrationState;
             regData.RegistrationCity = registration.RegistrationCity;
             regData.RegistrationZip = registration.RegistrationZip;
             regData.RegistrationPhone = registration.RegistrationPhone;
+
             _regRepo.SaveRegistration(regData);
             return RedirectToAction("Index");
         }
