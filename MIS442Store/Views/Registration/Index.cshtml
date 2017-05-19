@@ -1,19 +1,24 @@
-﻿@using MIS442Store.DataLayer.DataModels
+﻿@{
+    Layout = "~/Views/Shared/MISLayout.cshtml";
+}
+
+
+@using MIS442Store.DataLayer.DataModels
 @model List<Registration>
 
 
-@Html.ActionLink("Add Registration", "AddRegistration", "Registration")
+
 
 <table>
     <thead>
         
 
         <tr>
-            <th> Reg ID</th>
-            <th> Reg Date</th>
-            <th> REg Serial Number</th>
-            <th> Reg User Name</th>
-            <th></th>
+            <th> Registration ID</th>
+            <th> Registration Date</th>
+            <th> Registration Serial Number</th>
+            <th> Registration User Name</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -25,6 +30,10 @@
                 <td> @registration.RegistrationDate</td>
                 <td> @registration.RegistrationSerialNumber</td>
                 <td> @registration.RegistrationUserName</td>
+                <td> @Html.ActionLink("Add", "AddRegistration", "Registration")</td>
+<td>@Html.ActionLink("Edit", "Edit", "EditRegistration", new { @id = registration.RegistrationID }, null)</td>
+                <td>@Html.ActionLink("Delete", "Delete", "DeleteRegistration", new { @id = registration.RegistrationID }, null)</td>
+
             </tr>
         }
     </tbody>
