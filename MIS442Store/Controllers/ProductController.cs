@@ -64,8 +64,13 @@ namespace MIS442Store.Controllers
             _prodRepo.Save(product);
             return RedirectToAction("Index");
         }
-
-   
+        [OutputCache(Duration = 300)]
+        [HttpGet]    
+        public ActionResult ViewProduct(int id)
+        {
+            Product product = _prodRepo.Get(id);
+            return View(product);
+        }
         
     }
 

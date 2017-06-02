@@ -11,6 +11,7 @@
             <th> Product Code</th>
             <th> Product Version</th>
             <th> Product Release Date</th>
+            <th></th>
         </tr>
  
     
@@ -22,9 +23,11 @@
             <td> @product.ProductCode</td>
             <td> @product.ProductVersion</td>
             <td> @product.ProductReleaseDate</td>
+            <td>@Html.ActionLink("View Product", "ViewProduct", "Product", new { @id = product.ProductID }, null)</td>
           </tr>
         }
       
         
             </table>
+@Html.Partial("_ProductList")
         

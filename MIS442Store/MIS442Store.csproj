@@ -230,6 +230,7 @@
     </Compile>
     <Compile Include="DataLayer\Repositories\LINQProductRepository.cs" />
     <Compile Include="DataLayer\Repositories\NewsRepository.cs" />
+    <Compile Include="DataLayer\Repositories\ProductCachingRepository.cs" />
     <Compile Include="DataLayer\Repositories\ProductRepository.cs" />
     <Compile Include="DataLayer\Repositories\RegistrationRepository.cs" />
     <Compile Include="DataLayer\Repositories\StateRepository.cs" />
@@ -250,6 +251,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\KITTY.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -318,6 +320,8 @@
     <Content Include="Views\Registration\AddRegistration.cshtml" />
     <Content Include="Views\Registration\AdminIndex.cshtml" />
     <Content Include="Views\Shared\MISLayout.cshtml" />
+    <Content Include="Views\Product\ViewProduct.cshtml" />
+    <Content Include="Views\Product\_ProductList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

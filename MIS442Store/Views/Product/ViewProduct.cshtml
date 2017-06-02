@@ -1,0 +1,32 @@
+﻿@using MIS442Store.DataLayer.DataModels
+
+@model Product
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ProductID)
+    <div>
+        @Html.LabelFor(m => m.ProductName)
+        @Html.DisplayFor(m => m.ProductName)
+       
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.ProductCode)
+        @Html.DisplayFor(m => m.ProductCode)
+       
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.ProductVersion)
+        @Html.DisplayFor(m => m.ProductVersion)
+       
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.ProductReleaseDate)
+        @Html.DisplayFor(m => m.ProductReleaseDate)
+    
+    </div>
+
+ 
+}
