@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MIS442_THolland" Class="MIS442DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=turnsol.arvixe.com;Initial Catalog=MIS442_THolland;User ID=THolland" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MIS442_THollandConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Product" Member="ProductDOs">
+    <Type Name="ProductDO" Id="ID1">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductVersion" Type="System.Decimal" DbType="Decimal(5,1) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductReleaseDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="THolland.spProduct_Get" Method="spProduct_Get">
+    <Parameter Name="ProductID" Parameter="productID" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="THolland.spProduct_GetList" Method="spProduct_GetList">
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="THolland.spProduct_InsertUpdate" Method="spProduct_InsertUpdate">
+    <Parameter Name="ProductID" Parameter="productID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductCode" Parameter="productCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ProductVersion" Parameter="productVersion" Type="System.Decimal" DbType="Decimal(5,1)" />
+    <Parameter Name="ProductReleaseDate" Parameter="productReleaseDate" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

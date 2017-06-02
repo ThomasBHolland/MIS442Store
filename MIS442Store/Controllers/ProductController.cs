@@ -13,11 +13,11 @@ namespace MIS442Store.Controllers
 {
     public class ProductController : Controller
     {
-        private IProductRepository _prodRepo;
+        private LINQProductRepository _prodRepo;
 
         public ProductController()
         {
-            _prodRepo = new ProductRepository();
+            _prodRepo = new LINQProductRepository();
         }
         [HttpGet]
         public ActionResult Index()

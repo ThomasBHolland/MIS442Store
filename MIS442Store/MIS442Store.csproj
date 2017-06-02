@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -222,6 +223,12 @@
     <Compile Include="DataLayer\Interfaces\IProductRepository.cs" />
     <Compile Include="DataLayer\Interfaces\IRegistrationRepository.cs" />
     <Compile Include="DataLayer\Interfaces\IStateRepository.cs" />
+    <Compile Include="DataLayer\MIS442DB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MIS442DB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataLayer\Repositories\LINQProductRepository.cs" />
     <Compile Include="DataLayer\Repositories\NewsRepository.cs" />
     <Compile Include="DataLayer\Repositories\ProductRepository.cs" />
     <Compile Include="DataLayer\Repositories\RegistrationRepository.cs" />
@@ -247,6 +254,11 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataLayer\MIS442DB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MIS442DB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -317,6 +329,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataLayer\MIS442DB.dbml.layout">
+      <DependentUpon>MIS442DB.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
